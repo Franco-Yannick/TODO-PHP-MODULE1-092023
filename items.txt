@@ -1,0 +1,1 @@
+a:2:{i:0;a:2:{s:7:"checked";b:0;s:8:"intitule";s:5:"item1";}i:1;a:2:{s:7:"checked";b:0;s:8:"intitule";s:6:"item 2";}}
