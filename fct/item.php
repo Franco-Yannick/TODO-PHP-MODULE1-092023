@@ -1,17 +1,21 @@
 <?php
-    function displayItem($item){
-        $html = '<li>
+    function displayItem($key, $item){
+        $html = '<li class="'.($item['checked'] ? 'done':'').'">
         <!-- drag handle -->
         
         <!-- checkbox -->
         <div class="icheck-primary d-inline ml-2">
-          <input type="checkbox" value="" name="todo1" id="todoCheck1">
-          <label for="todoCheck1"></label>
-        </div>
+        <a href="toggleItem.php?item='.$key.'">';
+        if($item['checked']){
+          $html.='<i class="far fa-check-square"></i>';
+        }else{
+         $html.='<i class="far fa-square"></i>';
+
+        }
+       $html='</a></div>
         <!-- todo text -->
         <span class="text">'.$item['intitule'].'</span>
         <!-- Emphasis label -->
-        <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
         <!-- General tools such as edit or delete-->
         <div class="tools">
           <i class="fas fa-edit"></i>
@@ -23,4 +27,9 @@
 
     function getItems(){
         return  unserialize(file_get_contents(FILE_NAME));
+    }
+
+    function saveItems($items){
+      file_put_contents(FILE_NAME,serialize($items));
+
     }

@@ -4,14 +4,14 @@
     include('fct/item.php');
 
     $intitule = post('intitule');
-    if(!file_exists(FILE_NAME)){
-        file_put_contents(FILE_NAME,serialize([]));
-    }
+    
     $items =getItems();
     $items[] = [
+        'id'=> uniqid(),
         'checked'=>false,
         'intitule' => $intitule
     ];
-    file_put_contents(FILE_NAME,serialize($items));
+
+    saveItems($items);
     header('Location:index.php');
 
